@@ -82,6 +82,26 @@ body{margin:0;background:#f7f7f7;color:#111}
   .container{grid-template-columns:1fr}
   .sidebar{display:none}
 }
+.top-menu{
+  background:#111;
+  color:white;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:10px 0;
+  font-size:14px;
+}
+
+.top-menu a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+}
+
+.top-menu a:hover{
+  text-decoration:underline;
+}
+
 </style>
 </head>
 
@@ -92,6 +112,12 @@ body{margin:0;background:#f7f7f7;color:#111}
   <input class="search" placeholder="Search jewelry...">
   <div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
 </div>
+<div class="top-menu">
+  <a href="#home">Trang chủ</a>
+  <a href="#productsSection">Sản phẩm</a>
+  <a href="#contact">Liên hệ</a>
+</div>
+
 
 <div class="container">
   <div class="sidebar">
