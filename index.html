@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Diamond Cubans | Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  .footer{
+  background:#111;
+  color:white;
+  padding:30px 20px;
+  margin-top:30px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.footer h3{
+  margin-top:0;
+  font-size:18px;
+}
+
+.map iframe{
+  width:100%;
+  height:250px;
+  border:0;
+  border-radius:8px;
+}
+
+.social a{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 16px;
+  background:#1877f2;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:bold;
+}
+
+.social a:hover{
+  opacity:0.85;
+}
+
+@media(max-width:768px){
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+*{
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+body{
+  margin:0;
+  background:#f7f7f7;
+  color:#111;
+}
+
+
+.header{
+  background:black;
+  color:white;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.header h1{
+  font-size:20px;
+  margin:0;
+}
+
+.search{
+  width:260px;
+  padding:8px 12px;
+  border-radius:20px;
+  border:none;
+}
+
+
+.container{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:20px;
+  padding:20px;
+}
+
+
+.sidebar{
+  background:white;
+  padding:16px;
+  border-radius:6px;
+}
+
+.sidebar h3{
+  margin-top:0;
+  font-size:16px;
+}
+
+.filter{
+  margin-bottom:14px;
+}
+
+.filter label{
+  display:block;
+  font-size:14px;
+  margin:6px 0;
+  color:#555;
+}
+
+
+.main{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+
+.video-box{
+  background:white;
+  padding:16px;
+  border-radius:6px;
+}
+
+.video-box h2{
+  margin-top:0;
+  font-size:18px;
+}
+
+.video-box iframe{
+  width:100%;
+  height:360px;
+  border:none;
+  border-radius:6px;
+}
+
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;
+}
+
+.product{
+  background:white;
+  border-radius:6px;
+  overflow:hidden;
+  border:1px solid #eee;
+  transition:transform .2s;
+}
+
+.product:hover{
+  transform:translateY(-4px);
+}
+
+.product img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.product-content{
+  padding:12px;
+}
+
+.product-title{
+  font-size:14px;
+  height:36px;
+  overflow:hidden;
+}
+
+.price{
+  font-weight:bold;
+  margin:6px 0;
+}
+
+.buy{
+  width:100%;
+  padding:8px;
+  background:black;
+  color:white;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+
+@media(max-width:900px){
+  .container{
+    grid-template-columns:1fr;
+  }
+  .sidebar{
+    display:none;
+  }
+  .video-box iframe{
+    height:220px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>💎 IceBox Jonny Hoàng</h1>
+  <input class="search" placeholder="Search jewelry...">
+</div>
+
+<div class="container">
+
+
+  <div class="sidebar">
+    <h3>Filters</h3>
+
+    <div class="filter">
+      <strong>Category</strong>
+      <label><input type="checkbox"> Cuban Chains</label>
+      <label><input type="checkbox"> Diamond Necklaces</label>
+      <label><input type="checkbox"> Gold Chains</label>
+    </div>
+
+    <div class="filter">
+      <strong>Price</strong>
+      <label><input type="checkbox"> Under $5,000</label>
+      <label><input type="checkbox"> $5,000 – $10,000</label>
+      <label><input type="checkbox"> $10,000+</label>
+    </div>
+  </div>
+
+  
+  <div class="main">
+
+    
+    <div class="video-box">
+      <h2>🎬 King Von - Video Quảng Cáo</h2>
+      <iframe 
+        src="https://www.youtube.com/embed/JC-tlXp2Cm8"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  
+    <div class="products">
+
+  
+      <script>
+const products = [
+  {
+    name: "Diamond Cuban 14mm",
+    price: "$8,500",
+    image: "https://image.icebox.com/unsafe/600x0/filters:format(webp)/icebox-jewelry.s3.amazonaws.com/products/2091d096d6f1ecbaac9040adfb81a513.jpg"
+  },
+  {
+    name: "Iced Cuban 12mm",
+    price: "$7,200",
+    image: "https://image.icebox.com/unsafe/600x0/filters:format(webp)/icebox-jewelry.s3.amazonaws.com/products/ce332396b8d37b6f027e498eb7753e08.jpg"
+  },
+  {
+    name: "Rose Gold Cuban",
+    price: "$6,900",
+    image: "https://image.icebox.com/unsafe/600x0/filters:format(webp)/icebox-jewelry.s3.amazonaws.com/products/df3bcbc5a29cd9a7077354b1986e8b23.jpg"
+  },
+  {
+    name: "White Gold Cuban",
+    price: "$9,800",
+    image: "https://www.icebox.com/themes/default/frontend/oct-2023/assets/custom/cst-media_7.webp"
+  },
+  {
+    name: "Miami Cuban Link",
+    price: "$10,500",
+    image: "https://image.icebox.com/unsafe/600x0/filters:format(webp)/icebox-jewelry.s3.amazonaws.com/products/c3631762e959df747eb079318fe14ecc.jpg"
+  },
+  {
+    name: "Fully Iced Cuban",
+    price: "$15,000",
+    image: "https://image.icebox.com/unsafe/400x0/filters:format(webp)/icebox-jewelry.s3.amazonaws.com/products/71a8034165559ec745d6f5a0da73d58a.jpg"
+  },
+  {
+    name: "Yellow Gold Cuban",
+    price: "$6,200",
+    image: "https://image.icebox.com/unsafe/400x0/filters:format(webp)/icebox-jewelry.s3.amazonaws.com/products/75feb2a8ac4859ad23fbd05a57d264f3.jpg"
+  },
+  {
+    name: "Custom Diamond Cuban",
+    price: "$18,900",
+    image: "https://image.icebox.com/unsafe/400x0/filters:format(webp)/icebox-jewelry.s3.amazonaws.com/products/336090fbdecbee7a1563c54540e7b38a.jpg"
+  },
+  {
+    name: "VVS Diamond Cuban",
+    price: "$21,000",
+    image: "https://www.icebox.com/themes/default/frontend/oct-2023/assets/custom/cst-gallery_5.webp"
+  },
+  {
+    name: "Deagle Cuban Chain",
+    price: "$12,300",
+    image: "https://www.icebox.com/themes/default/frontend/oct-2023/assets/custom/cst-gallery_2.webp"
+  },
+  {
+    name: "Men's Cuban Rồng xanh mắt lé",
+    price: "$5,900",
+    image: "https://www.icebox.com/themes/default/frontend/oct-2023/assets/custom/cst-media_5.webp"
+  },
+  {
+    name: "Custom Cuban",
+    price: "$9,400",
+    image: "https://www.icebox.com/themes/default/frontend/oct-2023/assets/custom/cst-media_6.webp"
+  }
+];
+
+document.write(
+  products.map(p => `
+    <div class="product">
+      <img src="${p.image}">
+      <div class="product-content">
+        <div class="product-title">${p.name}</div>
+        <div class="price">${p.price}</div>
+        <button class="buy">Add to Cart</button>
+      </div>
+    </div>
+  `).join("")
+);
+</script>
+
+
+    </div>
+    <div class="footer">
+  <div class="footer-grid">
+
+    
+    <div class="map">
+      <h3>📍 Cửa hàng của tôi</h3>
+      <iframe 
+        src="https://www.google.com/maps?q=Ho%20Chi%20Minh%20City&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    
+    <div class="social">
+      <h3>📘 Kết nối với tôi</h3>
+      <p>Inbox Facebook để đặt hàng & custom dây Cuban 💎</p>
+      <a href="https://www.facebook.com/van.hoang.582400" target="_blank">
+        👉 Facebook: Văn Hoàng
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+</body>
+</html>
