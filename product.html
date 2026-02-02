@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chi tiết sản phẩm</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f7f7f7;
+}
+.container{
+  max-width:1000px;
+  margin:30px auto;
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+img{
+  width:100%;
+  border-radius:12px;
+}
+.price{
+  font-size:22px;
+  font-weight:bold;
+  margin:10px 0;
+}
+button{
+  padding:12px 20px;
+  background:black;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+.back{
+  display:inline-block;
+  margin-bottom:15px;
+  text-decoration:none;
+  color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div>
+    <a class="back" href="index.html">← Quay lại</a>
+    <img id="img">
+  </div>
+  <div>
+    <h1 id="name"></h1>
+    <div class="price">$<span id="price"></span></div>
+    <p>
+      Trang sức cao cấp IceBox Jonny Hoàng.  
+      Chất lượng VVS – bảo hành trọn đời.
+    </p>
+    <button>🛒 Add to Cart</button>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+document.getElementById("name").innerText = params.get("name");
+document.getElementById("price").innerText = Number(params.get("price")).toLocaleString();
+document.getElementById("img").src = params.get("img");
+</script>
+
+</body>
+</html>
