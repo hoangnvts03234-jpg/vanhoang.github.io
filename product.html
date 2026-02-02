@@ -4,49 +4,19 @@
 <meta charset="UTF-8">
 <title>Chi tiết sản phẩm</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f7f7f7;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f7f7;color:#111}
 .container{
-  max-width:1000px;
-  margin:30px auto;
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
+  max-width:900px;margin:40px auto;padding:20px;background:white;border-radius:8px;
+  display:grid;grid-template-columns:1fr 1fr;gap:30px;
 }
-img{
-  width:100%;
-  border-radius:12px;
-}
-.price{
-  font-size:22px;
-  font-weight:bold;
-  margin:10px 0;
-}
-button{
-  padding:12px 20px;
-  background:black;
-  color:white;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-.back{
-  display:inline-block;
-  margin-bottom:15px;
-  text-decoration:none;
-  color:#555;
-}
+img{width:100%;border-radius:8px}
+h1{font-size:24px;margin:0}
+.price{font-size:20px;font-weight:bold;margin:10px 0}
+button{padding:10px 18px;background:black;color:white;border:none;border-radius:6px;cursor:pointer}
+.back{display:inline-block;margin-bottom:20px;color:#444;text-decoration:none;font-size:14px}
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -57,20 +27,25 @@ button{
   <div>
     <h1 id="name"></h1>
     <div class="price">$<span id="price"></span></div>
-    <p>
-      Trang sức cao cấp IceBox Jonny Hoàng.  
-      Chất lượng VVS – bảo hành trọn đời.
-    </p>
-    <button>🛒 Add to Cart</button>
+    <button onclick="addCartDetail()">🛒 Add to Cart</button>
   </div>
 </div>
 
 <script>
 const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const price = params.get("price");
+const img = params.get("img");
 
-document.getElementById("name").innerText = params.get("name");
-document.getElementById("price").innerText = Number(params.get("price")).toLocaleString();
-document.getElementById("img").src = params.get("img");
+document.getElementById("name").innerText = name;
+document.getElementById("price").innerText = Number(price).toLocaleString();
+document.getElementById("img").src = img;
+
+// Add to cart từ trang chi tiết
+function addCartDetail(){
+  window.opener?.addCart(name, Number(price));
+  alert("Đã thêm vào giỏ hàng!");
+}
 </script>
 
 </body>
