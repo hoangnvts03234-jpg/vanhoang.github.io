@@ -12,7 +12,6 @@ body{margin:0;background:#f7f7f7;color:#111}
 .header{
   background:#000;color:#fff;
   padding:14px 20px;
-  display:flex;align-items:center;gap:10px
 }
 .header a{color:white;text-decoration:none;font-weight:bold}
 
@@ -39,13 +38,8 @@ body{margin:0;background:#f7f7f7;color:#111}
   margin:10px 0;
 }
 
-.section{
-  margin:16px 0;
-}
-.section h3{
-  margin-bottom:6px;
-  font-size:16px;
-}
+.section{margin:16px 0}
+.section h3{margin-bottom:6px;font-size:16px}
 
 .badge{
   display:inline-block;
@@ -55,6 +49,7 @@ body{margin:0;background:#f7f7f7;color:#111}
   border-radius:20px;
   font-size:13px;
   margin-right:6px;
+  margin-top:6px;
 }
 
 select,button{
@@ -72,7 +67,6 @@ button{
   cursor:pointer;
   font-weight:bold;
 }
-
 button:hover{opacity:.9}
 
 @media(max-width:900px){
@@ -98,26 +92,17 @@ button:hover{opacity:.9}
 
     <div class="section">
       <h3>📄 Mô tả</h3>
-      <p>
-        Dây chuyền Cuban cao cấp, thiết kế sang trọng theo phong cách IceBox.
-        Phù hợp đi chơi, dự tiệc, rapper / street style.
-      </p>
+      <p id="desc"></p>
     </div>
 
     <div class="section">
       <h3>📐 Size</h3>
-      <select>
-        <option>18 inch</option>
-        <option>20 inch</option>
-        <option>22 inch</option>
-        <option>24 inch</option>
-      </select>
+      <select id="size"></select>
     </div>
 
     <div class="section">
       <h3>💎 Chất liệu</h3>
-      <span class="badge">Vàng 14K</span>
-      <span class="badge">Kim cương VVS</span>
+      <div id="material"></div>
     </div>
 
     <button onclick="addCart()">🛒 Thêm vào giỏ hàng</button>
@@ -125,8 +110,27 @@ button:hover{opacity:.9}
 </div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
+// DATABASE SẢN PHẨM
+const productData = {
+  "Rose Gold Cuban": {
+    desc: "Dây chuyền Cuban vàng hồng cao cấp, thiết kế sang trọng theo phong cách IceBox. Phù hợp đi tiệc, street style và rapper.",
+    sizes: ["18 inch","20 inch","22 inch"],
+    material: ["Vàng hồng 14K","Kim cương VVS"]
+  },
+  "Diamond Cuban 14mm": {
+    desc: "Cuban bản 14mm full iced, độ lấp lánh cao, phong cách rapper Mỹ.",
+    sizes: ["20 inch","22 inch","24 inch"],
+    material: ["Vàng trắng 14K","Kim cương VVS"]
+  },
+  "Miami Cuban Link": {
+    desc: "Miami Cuban Link cổ điển, mạnh mẽ, phù hợp nam giới thích phong cách luxury.",
+    sizes: ["18 inch","20 inch","22 inch"],
+    material: ["Vàng 14K"]
+  }
+};
 
+// LẤY DATA TỪ URL
+const params = new URLSearchParams(window.location.search);
 const name  = params.get("name");
 const price = params.get("price");
 const img   = params.get("img");
@@ -134,6 +138,28 @@ const img   = params.get("img");
 document.getElementById("name").innerText = name;
 document.getElementById("price").innerText = Number(price).toLocaleString();
 document.getElementById("img").src = img;
+
+// RENDER THEO SẢN PHẨM
+const data = productData[name];
+
+if(data){
+  document.getElementById("desc").innerText = data.desc;
+
+  document.getElementById("size").innerHTML =
+    data.sizes.map(s=>`<option>${s}</option>`).join("");
+
+  document.getElementById("material").innerHTML =
+    data.material.map(m=>`<span class="badge">${m}</span>`).join("");
+}else{
+  document.getElementById("desc").innerText =
+    "Dây chuyền Cuban cao cấp, thiết kế sang trọng theo phong cách IceBox.";
+
+  document.getElementById("size").innerHTML =
+    "<option>18 inch</option><option>20 inch</option>";
+
+  document.getElementById("material").innerHTML =
+    "<span class='badge'>Vàng 14K</span>";
+}
 
 function addCart(){
   alert("✅ Đã thêm vào giỏ hàng: " + name);
