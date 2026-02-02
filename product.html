@@ -2,169 +2,110 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Chi tiết sản phẩm</title>
+<title>Sản phẩm</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 *{box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-body{margin:0;background:#f7f7f7;color:#111}
+body{margin:0;background:#f7f7f7}
 
-.header{
-  background:#000;color:#fff;
+.top-menu{
+  background:black;
   padding:14px 20px;
+  display:flex;
+  gap:20px;
 }
-.header a{color:white;text-decoration:none;font-weight:bold}
+.top-menu a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+}
 
-.container{
+.products{
   max-width:1100px;
-  margin:20px auto;
-  background:white;
-  border-radius:12px;
-  padding:20px;
+  margin:30px auto;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+  padding:0 20px;
 }
 
-.product-img img{
+.product{
+  background:white;
+  border-radius:14px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+.product img{
   width:100%;
   border-radius:12px;
 }
 
-.product-info h1{margin-top:0}
+.product h3{
+  margin:12px 0 6px;
+}
+
 .price{
-  font-size:22px;
   font-weight:bold;
-  margin:10px 0;
+  margin-bottom:10px;
 }
 
-.section{margin:16px 0}
-.section h3{margin-bottom:6px;font-size:16px}
-
-.badge{
-  display:inline-block;
-  background:#000;
-  color:#fff;
-  padding:6px 12px;
-  border-radius:20px;
-  font-size:13px;
-  margin-right:6px;
-  margin-top:6px;
-}
-
-select,button{
-  width:100%;
-  padding:12px;
-  margin-top:8px;
-  border-radius:8px;
-  border:1px solid #ddd;
-  font-size:14px;
-}
-
-button{
+.product a{
+  display:block;
   background:black;
   color:white;
-  cursor:pointer;
+  padding:10px;
+  border-radius:8px;
+  text-decoration:none;
   font-weight:bold;
 }
-button:hover{opacity:.9}
-
-@media(max-width:900px){
-  .container{grid-template-columns:1fr}
-}
+.product a:hover{opacity:.9}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <a href="index.html">⬅ Quay lại cửa hàng</a>
+<div class="top-menu">
+  <a href="index.html">Trang chủ</a>
+  <a href="products.html">Sản phẩm</a>
+  <a href="contact.html">Liên hệ</a>
 </div>
 
-<div class="container">
-  <div class="product-img">
-    <img id="img">
+<div class="products">
+
+  <!-- SẢN PHẨM 1 -->
+  <div class="product">
+    <img src="assets/img/rose.jpg">
+    <h3>Rose Gold Cuban</h3>
+    <div class="price">$2,500</div>
+    <a href="detail.html?name=Rose%20Gold%20Cuban&price=2500&img=assets/img/rose.jpg">
+      Xem chi tiết
+    </a>
   </div>
 
-  <div class="product-info">
-    <h1 id="name"></h1>
-    <div class="price">$<span id="price"></span></div>
-
-    <div class="section">
-      <h3>📄 Mô tả</h3>
-      <p id="desc"></p>
-    </div>
-
-    <div class="section">
-      <h3>📐 Size</h3>
-      <select id="size"></select>
-    </div>
-
-    <div class="section">
-      <h3>💎 Chất liệu</h3>
-      <div id="material"></div>
-    </div>
-
-    <button onclick="addCart()">🛒 Thêm vào giỏ hàng</button>
+  <!-- SẢN PHẨM 2 -->
+  <div class="product">
+    <img src="assets/img/14mm.jpg">
+    <h3>Diamond Cuban 14mm</h3>
+    <div class="price">$3,200</div>
+    <a href="detail.html?name=Diamond%20Cuban%2014mm&price=3200&img=assets/img/14mm.jpg">
+      Xem chi tiết
+    </a>
   </div>
+
+  <!-- SẢN PHẨM 3 -->
+  <div class="product">
+    <img src="assets/img/miami.jpg">
+    <h3>Miami Cuban Link</h3>
+    <div class="price">$1,900</div>
+    <a href="detail.html?name=Miami%20Cuban%20Link&price=1900&img=assets/img/miami.jpg">
+      Xem chi tiết
+    </a>
+  </div>
+
 </div>
-
-<script>
-// DATABASE SẢN PHẨM
-const productData = {
-  "Rose Gold Cuban": {
-    desc: "Dây chuyền Cuban vàng hồng cao cấp, thiết kế sang trọng theo phong cách IceBox. Phù hợp đi tiệc, street style và rapper.",
-    sizes: ["18 inch","20 inch","22 inch"],
-    material: ["Vàng hồng 14K","Kim cương VVS"]
-  },
-  "Diamond Cuban 14mm": {
-    desc: "Cuban bản 14mm full iced, độ lấp lánh cao, phong cách rapper Mỹ.",
-    sizes: ["20 inch","22 inch","24 inch"],
-    material: ["Vàng trắng 14K","Kim cương VVS"]
-  },
-  "Miami Cuban Link": {
-    desc: "Miami Cuban Link cổ điển, mạnh mẽ, phù hợp nam giới thích phong cách luxury.",
-    sizes: ["18 inch","20 inch","22 inch"],
-    material: ["Vàng 14K"]
-  }
-};
-
-// LẤY DATA TỪ URL
-const params = new URLSearchParams(window.location.search);
-const name  = params.get("name");
-const price = params.get("price");
-const img   = params.get("img");
-
-document.getElementById("name").innerText = name;
-document.getElementById("price").innerText = Number(price).toLocaleString();
-document.getElementById("img").src = img;
-
-// RENDER THEO SẢN PHẨM
-const data = productData[name];
-
-if(data){
-  document.getElementById("desc").innerText = data.desc;
-
-  document.getElementById("size").innerHTML =
-    data.sizes.map(s=>`<option>${s}</option>`).join("");
-
-  document.getElementById("material").innerHTML =
-    data.material.map(m=>`<span class="badge">${m}</span>`).join("");
-}else{
-  document.getElementById("desc").innerText =
-    "Dây chuyền Cuban cao cấp, thiết kế sang trọng theo phong cách IceBox.";
-
-  document.getElementById("size").innerHTML =
-    "<option>18 inch</option><option>20 inch</option>";
-
-  document.getElementById("material").innerHTML =
-    "<span class='badge'>Vàng 14K</span>";
-}
-
-function addCart(){
-  alert("✅ Đã thêm vào giỏ hàng: " + name);
-}
-</script>
 
 </body>
 </html>
