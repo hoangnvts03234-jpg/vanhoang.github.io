@@ -186,7 +186,7 @@ const products = [
 let cart=[], total=0;
 
 function render(){
- const search=document.querySelector(".search").value.toLowerCase();
+  const search=document.querySelector(".search").value.toLowerCase();
  const cats=[...document.querySelectorAll(".cat:checked")].map(c=>c.value);
  const prices=[...document.querySelectorAll(".priceFilter:checked")].map(p=>p.value);
 
@@ -207,33 +207,23 @@ function render(){
    }
    return true;
  }).map(p=>`
-  <div class="product">
+  <a class="product"
+     href="product.html?name=${encodeURIComponent(p.name)}&price=${p.price}&img=${encodeURIComponent(p.image)}"
+     style="text-decoration:none;color:inherit">
+
     <img src="${p.image}">
     <div class="product-content">
       <div class="product-title">${p.name}</div>
       <div class="price">$${p.price.toLocaleString()}</div>
-      <button class="buy" onclick="addCart('${p.name}',${p.price})">Add to Cart</button>
+      <button class="buy"
+        onclick="event.preventDefault(); addCart('${p.name}',${p.price})">
+        Add to Cart
+      </button>
     </div>
-  </div>
+
+  </a>
  `).join("");
 }
-
-function addCart(name,price){
- cart.push({name,price});
- total+=price;
- document.getElementById("cartCount").innerText=cart.length;
- document.getElementById("total").innerText=total;
- document.getElementById("cartItems").innerHTML=
-   cart.map(i=>`<div class="cart-item">${i.name} - $${i.price}</div>`).join("");
-}
-
-function toggleCart(){
- document.getElementById("cart").classList.toggle("active");
-}
-
-document.querySelectorAll("input").forEach(i=>i.onchange=render);
-document.querySelector(".search").oninput=render;
-render();
 </script>
 
 </body>
